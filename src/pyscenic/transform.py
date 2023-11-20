@@ -280,7 +280,7 @@ def module2df(
     weighted_recovery=False,
     return_recovery_curves=False,
     module2features_func=module2features,
-    present_gene_frac_thres=0.8
+    present_gene_frac_thres=present_gene_frac_thres,
 ) -> pd.DataFrame:
     """ """
     # Derive enriched and TF-annotated features for module.
