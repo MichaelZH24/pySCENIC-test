@@ -253,6 +253,7 @@ def prune_targets_command(args):
             num_workers=args.num_workers,
             motif_similarity_fdr=args.max_similarity_fdr,
             orthologuous_identity_threshold=args.min_orthologous_identity,
+            present_gene_frac_thres = args.present_gene_frac_thres,
         )
 
     LOGGER.info("Writing results to file.")
