@@ -280,6 +280,7 @@ def module2df(
     weighted_recovery=False,
     return_recovery_curves=False,
     module2features_func=module2features,
+    present_gene_frac_thres=0.8
 ) -> pd.DataFrame:
     """ """
     # Derive enriched and TF-annotated features for module.
@@ -298,10 +299,11 @@ def module2df(
     # If less than 80% of the genes are mapped to the ranking database, the module is skipped.
     n_missing = len(module) - len(genes)
     frac_missing = float(n_missing) / len(module)
-    if frac_missing >= 0.20:
+    frac_missing_thres = 1 - present_gene_frac_thres
+    if frac_missing >= frac_missing_thres:
         LOGGER.warning(
-            "Less than 80% of the genes in {} could be mapped to {}. Skipping this module.".format(
-                module.name, db.name
+            "Less than {}% of the genes in {} could be mapped to {}. Skipping this module.".format(
+                present_gene_frac_thres*100, module.name, db.name
             )
         )
         return DF_META_DATA
