@@ -370,6 +370,12 @@ def add_annotation_parameters(parser):
         help="Minimum orthologous identity to use when annotating enriched motifs (default: 0.0).",
     )
     group.add_argument(
+        "--present_gene_frac_thres",
+        type=float,
+        default=0.8,
+        help="present_gene_frac_thres (default: 0.8).",
+    )
+    group.add_argument(
         "--max_similarity_fdr",
         type=float,
         default=0.001,
